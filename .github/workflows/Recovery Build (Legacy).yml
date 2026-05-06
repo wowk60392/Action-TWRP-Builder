@@ -154,11 +154,6 @@ jobs:
         # sudo ln -s /usr/bin/python3 /usr/bin/python3
       continue-on-error: false
       
-      # 在执行编译的步骤前，加上这段自动替换脚本
-    - name: Patch TWRP graphics_overlay for newer Kernel ION API
-      run: |
-        sed -i 's/ionAllocData.heap_mask/ionAllocData.heap_id_mask/g' bootable/recovery/minuitwrp/graphics_overlay.cpp
-
     - name: Building recovery
       run: |
         source build/envsetup.sh
